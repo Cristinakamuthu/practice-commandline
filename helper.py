@@ -17,7 +17,7 @@ def all_actors():
 
 #  Find
 
-def find_movie():
+def find_movie(id):
     return session.query(Movie).filter(Movie.id == id ).first()
 
 # Create
