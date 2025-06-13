@@ -31,7 +31,7 @@ def create_movie(title,year,director_id, actor_id):
 
 # update
 
-def update_movie(id, title = None ,year = None ,director_id = None , actor_id = None )
+def update_movie(id, title = None ,year = None ,director_id = None , actor_id = None):
     movie = find_movie(id)
     if movie :
         if title:
@@ -43,7 +43,7 @@ def update_movie(id, title = None ,year = None ,director_id = None , actor_id = 
         if actor_id:
             movie.actor_id = actor_id
         session.commit()
-        return movie
+    return movie
     
 def delete_id(id):
     movie = find_movie(id)
