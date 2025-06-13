@@ -1,6 +1,15 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from . import Base
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+
+engine = create_engine('sqlite:///movie.db')
+Session = sessionmaker(bind=engine)
+session = Session()
+
 
 
 
@@ -8,8 +17,8 @@ from . import Base
 class Actor(Base):
       __tablename__ = 'actors'
 
-      id = Column(Integer,primary_key = True)
-      name = Column(String)
+     
+      name = Column(String,primary_key = True)
       age = Column(Integer)
 
       movies = relationship ('Movie', back_populates = 'actor')
@@ -19,8 +28,8 @@ class Actor(Base):
 class Director(Base):
       __tablename__ = 'directors'
 
-      id = Column(Integer,primary_key = True)
-      name = Column(String)
+      
+      name = Column(String, primary_key =True)
       age = Column(Integer)
 
       movies = relationship ('Movie', back_populates = 'director')
